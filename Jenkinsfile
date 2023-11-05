@@ -11,6 +11,8 @@ pipeline {
                 sh 'sudo docker images'
                 sh 'sudo docker build -t susigughnginx01 .'
                 sh 'sudo docker images'
+                sh 'sudo docker stop susigughnginx01'
+                sh 'sudo docker rm susigughnginx01'
                 sh 'sudo docker run -dit --name susigughnginx01 -p8020:80 susigughnginx01'
             }
         }
