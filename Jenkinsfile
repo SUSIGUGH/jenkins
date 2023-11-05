@@ -9,7 +9,8 @@ pipeline {
                 sh 'cd jenkins && ls -ltr'
                 sh 'sudo docker ps'
                 sh 'sudo docker images'
-                sh 'ls -ltr'
+                sh 'sudo docker build -t susigughnginx01 .'
+                sh 'sudo docker images'
             }
         }
     }
