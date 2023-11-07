@@ -2,11 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Git Connect') {
             steps {
                 sh 'rm -Rf jenkins'
                 sh 'git clone https://github.com/SUSIGUGH/jenkins.git'
                 sh 'cd jenkins && ls -ltr'
+		}
+		}
+	stage('Docker Image Creation')
+	{
+	steps{
                 sh 'sudo docker ps'
                 sh 'sudo docker images'
                 sh 'sudo docker build -t susigughnginx01 .'
@@ -14,6 +19,12 @@ pipeline {
                 sh 'sudo docker stop susigughnginx01'
                 sh 'sudo docker rm susigughnginx01'
                 sh 'sudo docker run -dit --name susigughnginx01 -p8020:80 susigughnginx01'
+		}
+		}
+	stage('Tag Image')
+	{
+	steps{
+	       sh 'sudo docker image tag susigughnginx01 susigugh/susigughnginx01:1.0'
             }
         }
     }
