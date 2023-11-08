@@ -48,7 +48,7 @@ pipeline
 	{
 	sh 'terraform init'
 	sh 'terraform apply -auto-approve'
-	sh 'terraform destory -auto-approve'
+	sh 'terraform destroy -auto-approve'
 	}
 	}
 
