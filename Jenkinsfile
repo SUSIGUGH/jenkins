@@ -38,7 +38,7 @@ pipeline
 	stage('Push Image to Docker Hub')
 	{
 	steps{
-        sh 'sudo docker login -u=${udockersusigugh} -p=${pdockersusigugh} && sudo docker push susig:wq:ugh/susigughnginx01:1.0'
+        sh 'sudo docker login -u=${udockersusigugh} -p=${pdockersusigugh} && sudo docker push susigugh/susigughnginx01:1.0'
 	}
 	}
 
