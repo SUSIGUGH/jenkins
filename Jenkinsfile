@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Git Connect') {
             steps {
                 sh 'rm -Rf jenkins'
@@ -9,6 +10,8 @@ pipeline {
                 sh 'cd jenkins && ls -ltr'
 		}
 		}
+
+
 	stage('Docker Image Creation')
 	{
 	steps{
@@ -21,11 +24,22 @@ pipeline {
                 sh 'sudo docker run -dit --name susigughnginx01 -p8020:80 susigughnginx01'
 		}
 		}
+
+
 	stage('Tag Image')
 	{
 	steps{
 	       sh 'sudo docker image tag susigughnginx01 susigugh/susigughnginx01:1.0'
             }
         }
+
+
+	stage('Push Image to Docker Hub')
+	{
+	steps{
+        sh 'sudo docker login -u=${udockersusigugh} -p=${pdockersusigugh} && sudo docker push susig:wq:ugh/susigughnginx01:1.0'
+	}
+	}
+
     }
 }
